@@ -1,0 +1,14 @@
+{
+  "name": "captionai-bot",
+  "version": "1.0.0",
+  "description": "CaptionAI Generator is an AI-powered chatbot that generates creative captions for your images, posts, or any content. It leverages the Google Gemini API to provide high-quality, context-aware captions tailored to your preferences.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jasaman Singh",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
