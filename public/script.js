@@ -21,6 +21,20 @@ function appendMessage(text, sender = 'user') {
     const msgDiv = document.createElement('div');
     msgDiv.className = `message ${sender}`;
     
+    // Create wrapper for content and icon
+    const contentWrapper = document.createElement('div');
+    contentWrapper.className = 'message-content-wrapper';
+    
+    // Create icon element
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'message-icon';
+    
+    if (sender === 'bot') {
+        iconDiv.innerHTML = '<i class="fas fa-robot"></i>';
+    } else {
+        iconDiv.innerHTML = '<i class="fas fa-user"></i>';
+    }
+    
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
     
@@ -33,7 +47,10 @@ function appendMessage(text, sender = 'user') {
         contentDiv.textContent = text;
     }
     
-    msgDiv.appendChild(contentDiv);
+    // Build the message structure
+    contentWrapper.appendChild(iconDiv);
+    contentWrapper.appendChild(contentDiv);
+    msgDiv.appendChild(contentWrapper);
     chatWindow.appendChild(msgDiv);
     
     // Animate message appearance
@@ -95,11 +112,24 @@ chatForm.addEventListener('submit', async (e) => {
     const typingDiv = document.createElement('div');
     typingDiv.className = 'message bot';
     
+    // Create wrapper for content and icon
+    const typingWrapper = document.createElement('div');
+    typingWrapper.className = 'message-content-wrapper';
+    
+    // Create bot icon
+    const typingIcon = document.createElement('div');
+    typingIcon.className = 'message-icon';
+    typingIcon.innerHTML = '<i class="fas fa-robot"></i>';
+    
+    // Create typing animation in content
     const typingContent = document.createElement('div');
     typingContent.className = 'message-content';
     typingContent.innerHTML = '<div class="thinking"><span></span><span></span><span></span></div>';
     
-    typingDiv.appendChild(typingContent);
+    // Add to DOM
+    typingWrapper.appendChild(typingIcon);
+    typingWrapper.appendChild(typingContent);
+    typingDiv.appendChild(typingWrapper);
     chatWindow.appendChild(typingDiv);
     chatWindow.scrollTop = chatWindow.scrollHeight;
     
@@ -156,54 +186,3 @@ userInput.addEventListener('keydown', (e) => {
         // Allow line breaks with Shift+Enter
     }
 });
-
-// Toggle options panel
-document.querySelector('.tool-button').addEventListener('click', () => {
-    const optionsContainer = document.querySelector('.options-container');
-    optionsContainer.classList.toggle('active');
-});
-
-// Initialize any header button functionality
-document.querySelector('.new-chat-button').addEventListener('click', () => {
-    // Clear chat history
-    while (chatWindow.firstChild) {
-        chatWindow.removeChild(chatWindow.firstChild);
-    }
-    // Add welcome message again
-    appendMessage('Hello! I can help you create engaging captions. Just describe what you need a caption for.', 'bot');
-});
-
-// Add styles for thinking animation
-const style = document.createElement('style');
-style.textContent = `
-    .thinking {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        height: 20px;
-    }
-    
-    .thinking span {
-        display: block;
-        width: 8px;
-        height: 8px;
-        background-color: #acacbe;
-        border-radius: 50%;
-        opacity: 0.6;
-        animation: thinking 1.4s infinite ease-in-out both;
-    }
-    
-    .thinking span:nth-child(1) {
-        animation-delay: -0.32s;
-    }
-    
-    .thinking span:nth-child(2) {
-        animation-delay: -0.16s;
-    }
-    
-    @keyframes thinking {
-        0%, 80%, 100% { transform: scale(0.6); }
-        40% { transform: scale(1); }
-    }
-`;
-document.head.appendChild(style);
