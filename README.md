@@ -1,60 +1,95 @@
-# CaptionAI Generator
+# CaptionAI Bot
 
-CaptionAI Generator is an AI-powered chatbot that generates creative captions for your images, posts, or any content. It leverages the Google Gemini API to provide high-quality, context-aware captions tailored to your preferences.
+CaptionAI Bot is an AI-powered caption generator that creates engaging, creative captions for your social media posts, images, or any content. It leverages Google's Gemini API to generate high-quality, context-aware captions tailored to your specific requirements.
+
+![CaptionAI Bot](https://img.shields.io/badge/CaptionAI-Bot-blue)
 
 ## Features
 
-- **Chatbot Interface:** Interact with CaptionAI as a conversational bot to generate captions easily.
-- **Customizable Response Style:** Choose from various response types such as funny, formal, casual, and more.
-- **Caption Length Control:** Specify the desired length of your caption (short, medium, long).
-- **Powered by Google Gemini API:** Utilizes the free Google Gemini API for advanced AI-generated text.
+- Generate captions in different styles (funny, formal, casual, inspirational)
+- Control caption length (short, medium, long)
+- Simple and intuitive chat interface
+- Responsive design for mobile and desktop
+- Smooth animations powered by GSAP
 
-## Services
+## Tech Stack
 
-1. **Response Type Options:**
-   - Funny
-   - Formal
-   - Casual
-   - Inspirational
-   - And more!
-2. **Caption Length:**
-   - Short
-   - Medium
-   - Long
+- **Frontend**: HTML, CSS, JavaScript (Vanilla)
+- **Backend**: Node.js, Express
+- **Animation**: GSAP
+- **AI**: Google Gemini API
 
-## Getting Started
+## Prerequisites
 
-1. **Clone the repository:**
+- Node.js (v14 or higher)
+- Google Gemini API key (Get one at [Google AI Studio](https://makersuite.google.com/app/apikey))
+
+## Installation
+
+1. Clone the repository:
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/yourusername/captionai-bot.git
+   cd captionai-bot
    ```
-2. **Install dependencies:**
-   ```bash
-   # Add your installation instructions here (e.g., npm install, pip install -r requirements.txt)
-   ```
-3. **Set up Google Gemini API:**
-   - Sign up for a free Google Gemini API key.
-   - Add your API key to the project configuration (see `.env.example` or project docs).
 
-4. **Run the chatbot:**
+2. Install dependencies:
    ```bash
-   # Add your run instructions here (e.g., npm start, python app.py)
+   npm install
    ```
+
+3. Create a `.env` file in the root directory and add your Google Gemini API key:
+   ```
+   GOOGLE_API_KEY=your_api_key_here
+   ```
+
+## Running the Application
+
+### Development Mode (with auto-restart)
+
+```bash
+npm run dev
+```
+
+### Production Mode
+
+```bash
+npm start
+```
+
+The application will be available at [http://localhost:3000](http://localhost:3000).
+
+## Project Structure
+
+```
+captionai-bot/
+├── public/                # Frontend static files
+│   ├── index.html         # Main HTML file
+│   ├── script.js          # Frontend JavaScript
+│   └── style.css          # CSS styles
+├── main.js                # Express server and API endpoints
+├── package.json           # Project dependencies and scripts
+├── .env                   # Environment variables (API keys)
+└── README.md              # Project documentation
+```
 
 ## Usage
 
-- Start a chat with CaptionAI.
-- Select your preferred response type and caption length.
-- Submit your request and receive a tailored caption instantly!
+1. Open the application in your browser
+2. Choose the caption style and length from the dropdowns
+3. Type what you need a caption for (e.g., "a sunset photo at the beach")
+4. Click "Send" or press Enter
+5. The AI will generate a caption based on your requirements
 
-## Contributing
+## Security Notes
 
-Contributions are welcome! Please open issues or submit pull requests for improvements.
+- The `.env` file containing your API key should never be committed to version control
+- In production, you should set specific CORS origins instead of allowing all origins
+- Consider implementing rate limiting for production use
 
 ## License
 
-[MIT License](LICENSE)
+ISC
 
----
+## Author
 
-*Powered by Google Gemini API*
+Jasaman Singh
