@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CaptionAI Bot - AI-powered creative caption generator using Google Gemini API">
+    <meta name="keywords" content="caption generator, AI captions, social media captions">
+    <meta name="author" content="Jasaman Singh">
+
+    <!-- Theme color for browser tabs on mobile -->
+    <meta name="theme-color" content="#121212">
+
+    <title>CaptionAI Bot | AI Caption Generator</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💬</text></svg>"
+        type="image/svg+xml">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header bar -->
+        <header class="header">
+            <div class="header-left">
+                <h1>CaptionAI</h1>
+            </div>
+
+        </header>
+
+        <!-- Main chat area -->
+        <main class="chat-container">
+            <div class="messages" id="chat-window" aria-live="polite" role="log" aria-label="Chat conversation">
+                <!-- Messages will be added dynamically -->
+            </div>
+
+            <!-- Input area -->
+            <div class="input-container">
+                <form id="chat-form" aria-label="Caption generator form">
+                    <div class="controls">
+                        <div class="options-container">
+                            <select id="response-type" aria-label="Select response type">
+                                <option value="funny">Funny</option>
+                                <option value="formal">Formal</option>
+                                <option value="casual">Casual</option>
+                                <option value="inspirational">Inspirational</option>
+                            </select>
+                            <select id="caption-length" aria-label="Select caption length">
+                                <option value="short">Short</option>
+                                <option value="medium">Medium</option>
+                                <option value="long">Long</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="user-input" placeholder="Ask anything..." aria-label="Type your caption request" rows="1" required></textarea>
+                        <button type="submit" class="send-button" aria-label="Send message">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="input-footer">
+                        <p class="disclaimer">CaptionAI can make mistakes. Check important info.</p>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"
+        integrity="sha512-f6bQMg6nkSRw/xfHw5BCbISe/dJjXrVGfz9BSDwhZtiErHwk7ifbmBEtF9vFW8UNIQPhV2uEFVyI/UHob9r7Cw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

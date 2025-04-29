@@ -2,8 +2,6 @@
 
 CaptionAI Bot is an AI-powered caption generator that creates engaging, creative captions for your social media posts, images, or any content. It leverages Google's Gemini API to generate high-quality, context-aware captions tailored to your specific requirements.
 
-![CaptionAI Bot](https://img.shields.io/badge/CaptionAI-Bot-blue)
-
 ## Features
 
 - Generate captions in different styles (funny, formal, casual, inspirational)
@@ -28,7 +26,7 @@ CaptionAI Bot is an AI-powered caption generator that creates engaging, creative
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/captionai-bot.git
+   https://github.com/jasamansinghchaggar/CaptionAI-Bot.git
    cd captionai-bot
    ```
 
@@ -79,12 +77,6 @@ captionai-bot/
 3. Type what you need a caption for (e.g., "a sunset photo at the beach")
 4. Click "Send" or press Enter
 5. The AI will generate a caption based on your requirements
-
-## Security Notes
-
-- The `.env` file containing your API key should never be committed to version control
-- In production, you should set specific CORS origins instead of allowing all origins
-- Consider implementing rate limiting for production use
 
 ## License
 
