@@ -24,6 +24,10 @@
     
     /* Typography */
     --font-primary: 'Poppins', sans-serif;
+    
+    /* Heights for textarea */
+    --textarea-min-height: 24px;
+    --textarea-max-height: 150px;
 }
 
 /* ===== RESET & BASE STYLES ===== */
@@ -89,7 +93,8 @@ button {
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 /* Message area */
@@ -190,6 +195,8 @@ button {
     width: 100%;
     position: relative;
     bottom: 0;
+    background-color: var(--color-bg);
+    z-index: 10;
 }
 
 #chat-form {
@@ -251,6 +258,7 @@ button {
     margin: 0 auto;
     max-width: 650px;
     width: 100%;
+    position: relative;
 }
 
 #user-input {
@@ -261,12 +269,25 @@ button {
     color: var(--color-text);
     font-size: 16px;
     line-height: 1.5;
-    max-height: 200px;
+    min-height: var(--textarea-min-height);
+    max-height: var(--textarea-max-height);
     padding: 0;
     outline: none;
     font-family: var(--font-primary);
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     transition: height 0.1s;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+#user-input::-webkit-scrollbar {
+    width: 4px;
+}
+
+#user-input::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-full);
 }
 
 #user-input::placeholder {
@@ -282,10 +303,20 @@ button {
     border-radius: var(--radius-full);
     background-color: transparent;
     transition: background-color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+}
+
+.send-button.active {
+    background-color: var(--color-primary);
 }
 
 .send-button:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+.send-button.active:hover {
+    background-color: var(--color-primary);
+    opacity: 0.9;
 }
 
 .send-button i {
@@ -295,6 +326,10 @@ button {
 
 .send-button:hover i {
     color: var(--color-text);
+}
+
+.send-button.active i {
+    color: white;
 }
 
 /* Input footer */
@@ -349,7 +384,85 @@ button {
 
 /* ===== RESPONSIVE STYLES ===== */
 @media (max-width: 768px) {
+    .app-container {
+        height: 95vh;
+    }
+
     .input-container {
         padding: 8px;
+        padding-bottom: env(safe-area-inset-bottom, 8px);
+    }
+
+    .message-content-wrapper {
+        padding: 0 16px;
+    }
+    
+    .options-container {
+        flex-direction: row;
+        gap: 8px;
+    }
+    
+    .options-container select {
+        font-size: 13px;
+        padding: 7px 10px;
+        padding-right: 24px;
+        background-position: right 6px center;
+    }
+    
+    .input-group {
+        padding: 8px 12px;
+    }
+    
+    #user-input {
+        font-size: 15px;
+        padding-right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-container {
+        height: 93vh;
+    }
+    
+    .header h1 {
+        font-size: 18px;
+    }
+    
+    .message-content-wrapper {
+        padding: 0 12px;
+        gap: 8px;
+    }
+    
+    .message-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+        margin-left: 8px;
+    }
+    
+    .input-container {
+        padding: 6px;
+    }
+    
+    #chat-form {
+        gap: 6px;
+    }
+    
+    .controls {
+        padding: 0 4px;
+    }
+    
+    /* Fix for the textarea cutting off on small screens */
+    .chat-container {
+        padding-bottom: 10px;
+    }
+    
+    .input-group {
+        border-radius: 10px;
+    }
+    
+    .options-container {
+        flex-direction: row;
+        gap: 6px;
     }
 }

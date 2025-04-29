@@ -66,12 +66,35 @@ function appendMessage(text, sender = 'user') {
 
 // Auto-resize textarea as user types
 function setupTextareaAutoResize() {
+    // Set initial height
     userInput.setAttribute('style', 'height: auto;');
-    userInput.addEventListener('input', function() {
-        this.style.height = 'auto';
-        this.style.height = (this.scrollHeight) + 'px';
+    
+    // Make sure textarea doesn't exceed the maximum height
+    const resizeTextarea = () => {
+        // Reset height to auto to get the correct scrollHeight
+        userInput.style.height = 'auto';
+        
+        // Calculate new height (clamped to max-height if needed)
+        const newHeight = Math.min(userInput.scrollHeight, parseInt(getComputedStyle(document.documentElement).getPropertyValue('--textarea-max-height')));
+        
+        // Apply the new height
+        userInput.style.height = newHeight + 'px';
+        
+        // Enable scrolling if content exceeds max height
+        userInput.style.overflowY = userInput.scrollHeight > newHeight ? 'auto' : 'hidden';
+        
+        // Update send button state
         updateSendButtonState();
-    });
+    };
+    
+    // Apply resize on input
+    userInput.addEventListener('input', resizeTextarea);
+    
+    // Also resize on window resize to handle orientation changes
+    window.addEventListener('resize', resizeTextarea);
+    
+    // Initial resize
+    resizeTextarea();
 }
 
 // Update send button appearance based on input
